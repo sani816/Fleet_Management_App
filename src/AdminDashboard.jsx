@@ -16,7 +16,23 @@ const AdminDashboard=()=>{
         setNewFleet({vehicleRegNo:"",category:"",Drivername:""})
     },[newFleet,fleetData])
 
+const updateDriver=useCallback((id,driverName)=>{
+    if(!driverName.trim()){
+        alert("driver name can't be empty")
+        return
+    }
+    setFleetData(fleetData.map(vehicle=>vehicle.id===id?{...vehicle,AvaibilityStatus:vehicle.AvaibilityStatus==="avalable"?"unavailable":"available"}:vehicle))
+},[fleetData])
 
+const changeAvaibility=useCallback((id)=>{
+    setFleetData(fleetData.map(vehicle=>vehicle.id===id?{...vehicle,driverName}:vehicle))
+},[fleetData])
+
+const deleteVehicle=useCallback((id)=>{
+    if(window.confirm("are u sure to delete this vehicle?")){
+        setFleetData(fleetData.filter(vehicle=>vehicle.id!==id))
+    }
+},[fleetData])
 
     return(
         <div>

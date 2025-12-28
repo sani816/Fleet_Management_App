@@ -20,9 +20,11 @@ const Login=({login})=>{
 
     return(
         <div>
+            <form onSubmit={handleSubmit}>
             <input type="email" ref={emailRef} placeholder="enter your email"></input>
             <input type="password" id="password" placeholder="enter your password"></input>
-            <button onClick={handleSubmit}>Login</button>
+            <button type="submit">Login</button>
+            </form>
         </div>
     )
 }
